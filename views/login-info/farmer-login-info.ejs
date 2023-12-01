@@ -1,0 +1,43 @@
+<%-include("../header.ejs")%>
+
+<div class="info_body">
+    <!-- 
+        
+        1) name
+        2) which area he beglongs to
+        3) which crops he takes yearly
+        4) how much acres of land he owns
+        5) yearly income
+
+    -->
+    <form action="/tbd" method="post">
+        <h4 class="info_h1" style="margin-bottom: 50px;">Fill your personal information!</h4>
+        <div class="name info-content">
+            <label for="">Enter your full name</label>
+            <input type="text" name="full_name" class="form-control" autocomplete="off" placeholder="Full name.." required>
+        </div>
+        <div class="email info-content">
+            <label for="">Enter your address</label>
+            <input type="text" name="address" autocomplete="off" class="form-control" placeholder="Enter your address.." required>
+        </div>
+        <div class="email info-content">
+            <label for="">Enter your city / village name</label>
+            <input type="text" name="city" autocomplete="off" class="form-control" placeholder="Enter your city / village name.." required>
+        </div>
+        <div class="Subject info-content">
+            <label for="">Which crops you take</label>
+            <input type="text" name="crop_names" class="form-control" autocomplete="off"  placeholder="Crops you take.." required>
+        </div>
+        <div class="Message info-content">
+            <label for="">How much acres of land do you own</label>
+            <input type="text" name="land" class="form-control" autocomplete="off"  placeholder="How much acres land you own.." required>
+        </div>
+        <div class="Message1 info-content">
+            <label for="">What is your yearly income</label>
+            <input type="text" name="income" class="form-control" autocomplete="off"  placeholder="Yearly income.." required>
+        </div>
+        <button class="btn btn-success nav-item btn-md info_btn" type="submit">Next >></button>
+    </form>
+</div>
+
+<%-include("../footer.ejs")%>

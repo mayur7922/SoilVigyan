@@ -1,0 +1,20 @@
+<%-include("../header.ejs")%>
+
+<div>
+    <div class="vertical_navbar">
+        <div class="avn"><a href="/crop_health_monitoring" class="anv">Monitor</a></div>
+        <div class="avn"><a href="/weather_conditions" class="anv">Weather</a></div>
+        <div class="cvn"><a href="/track_soil" class="anv">Soil Track</a></div>
+        <div class="dvn"><a href="/dashboard" class="anv">Dashboard</a></div>
+    </div>
+    <div class="weather">
+        <h3 style="margin-bottom: 20px; font-family: 'Times New Roman', Times, serif;">Weather conditions</h3>
+        <form action="/weather_conditions" method="post">
+            <label for="" style="font-family: 'Times New Roman', Times, serif;">Enter your city name: </label>
+            <input type="text" style="width: 200px; margin: 20px 0 20px 500px;" name="city" class="form-control" autocomplete="off" placeholder="Full name.." required>
+            <button class="btn btn-success nav-item btn-md" type="submit">submit</button>
+        </form>
+    </div>
+</div>
+
+<%-include("../footer.ejs")%>

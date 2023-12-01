@@ -1,0 +1,83 @@
+<%-include("../header.ejs")%>
+
+<div class="crop_fertilizer_suggestions">
+    <div class="crop_suggestions">
+        <h4 style="margin-bottom: 20px;">Crop Prediction</h4>
+        <form action="/crop_prediction" method="post">
+            <div class="prediction-N">
+                <label style="margin-bottom: 5px;">Nitrogen (kg/ha)</label>
+                <input type="text" name="N" class="form-control" autocomplete="off" placeholder="Value of N.." required>
+            </div>
+            <div class="prediction-P">
+                <label style="margin-bottom: 5px;">Phosphorous (kg/ha)</label>
+                <input type="text" name="P" class="form-control" autocomplete="off" placeholder="Value of P.." required>
+            </div>
+            <div class="prediction-K">
+                <label style="margin-bottom: 5px;">Potassium (kg/ha)</label>
+                <input type="text" name="K" class="form-control" autocomplete="off" placeholder="Value of K.." required>
+            </div>
+            <div class="prediction-H">
+                <label style="margin-bottom: 5px;">Humidity (%)</label>
+                <input type="text" name="H" class="form-control" autocomplete="off" placeholder="Humidity.." required>
+            </div>
+            <div class="prediction-T">
+                <label style="margin-bottom: 5px;">pH value (1-10)</label>
+                <input type="text" name="pH" class="form-control" autocomplete="off" placeholder="pH.." required>
+            </div>
+            <button type="submit" class="btn btn-success nav-item crop-prediction-button">Predict Crop</button>
+        </form>
+        <div style="position: relative; top: -150px;">
+            <%if(store.crop_suggestion){%>
+                <%if(store.crop_suggestion.name == "NULL"){%>
+                    <p style="margin-top: 50px; font-size: 20px; font-family: 'Times New Roman', Times, serif;">You can't take any crop.</p>
+                    <p style="margin-top: 20px; font-size: 20px; font-family: 'Times New Roman', Times, serif;">You need to make your soil fertile.</p>
+                <%}else{%>
+                    <img src="<%=store.crop_suggestion.url%>" alt="">
+                    <p style="margin-top: 10px; font-size: 20px; font-family: 'Times New Roman', Times, serif;"><%=store.crop_suggestion.name%></p>
+                <%}%>
+            <%}%>
+        </div>
+    </div>
+    <div class="fertilizer_suggestions">
+        <h4>Fertilizer Prediction</h4>
+        <form action="/fertilizer_suggestions" method="post">
+            <div class="prediction-N" style="margin-left: 150px;">
+                <label style="margin-bottom: 5px;">Nitrogen (kg/ha)</label>
+                <input type="text" name="N" class="form-control" autocomplete="off" placeholder="Value of N.." required>
+            </div>
+            <div class="prediction-P" style="margin-left: 170px;">
+                <label style="margin-bottom: 5px;">Phosphorous (kg/ha)</label>
+                <input type="text" name="P" class="form-control" autocomplete="off" placeholder="Value of P.." required>
+            </div>
+            <div class="prediction-K" style="margin-left: 190px;">
+                <label style="margin-bottom: 5px;">Potassium (kg/ha)</label>
+                <input type="text" name="K" class="form-control" autocomplete="off" placeholder="Value of K.." required>
+            </div>
+            <div class="prediction-H" style="visibility: hidden;">
+                <label style="margin-bottom: 5px;">Humidity (%)</label>
+                <input type="text" name="H" class="form-control" autocomplete="off" placeholder="Humidity..">
+            </div>
+            <div class="prediction-T" style="visibility: hidden;">
+                <label style="margin-bottom: 5px;">pH value (1-10)</label>
+                <input type="text" name="pH" class="form-control" autocomplete="off" placeholder="pH..">
+            </div>
+            <div class="prediction-C" style="margin-top: 40px;">
+                <label style="margin-bottom: 5px;">For which crop you are looking for the fertilizer</label>
+                <select name="type" class="form-select" required>
+                    <option value="" data-display="Select">Select crop</option>
+                    <option name="C">Tomato</option>
+                  </select>
+            </div>
+            <button type="submit" class="btn btn-success nav-item crop-prediction-button">Predict Fertilizer</button>
+        </form>
+        <div style="position: relative; top: -100px; font-size: 20px; font-family: 'Times New Roman', Times, serif;">
+            <%if(store.fertilizer_suggestion.length > 0){%>
+                <%store.fertilizer_suggestion.forEach(function(i){%>
+                    <%=i%>
+                    <br>
+                <%})%>
+            <%}%>
+        </div>
+    </div>
+    Copyright © 2023 eKrushi. All right reserved
+</div>

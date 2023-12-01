@@ -1,0 +1,31 @@
+<%-include("header.ejs")%>
+
+<div class="_body">
+    <div class="wrapper">
+        <form action="/signup_clicked" method="post">
+            <h1>Sign Up</h1>
+            <div class="input-box">
+                <input type="text" name="username" autocomplete="off" placeholder="Username" required>
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="input-box">
+                <input type="password" name="password" autocomplete="off" placeholder="Password" required>
+                <i class='bx bxs-lock-alt' ></i>
+            </div>
+            <div style="text-align: center; padding-bottom: 18px; padding-left: 80px; padding-right: 80px; margin-bottom: 8px;">
+                <select name="type" class="form-select form-select-sm" style="border-radius: 30px;" required>
+                    <option value="" data-display="Select">Select</option>
+                    <option value="farmer">Farmer</option>
+                    <option value="buyer">Buyer</option>
+                  </select>
+            </div>
+            <button type="submit" class="btn">Sign Up</button>
+            
+            <div class="register-link">
+                <p>Don't have an account ? <a href="/signup">Register</a></p>
+            </div>
+        </form>
+    </div>
+</div>
+
+<%-include("footer.ejs")%>

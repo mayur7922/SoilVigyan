@@ -1,0 +1,49 @@
+<%-include("../header.ejs")%>
+
+<div class="track_soil">
+    <div class="vertical_navbar">
+        <div class="avn"><a href="/crop_health_monitoring" class="anv">Monitor</a></div>
+        <div class="avn"><a href="/weather_conditions" class="anv">Weather</a></div>
+        <div class="cvn"><a href="/track_soil" class="anv">Soil Track</a></div>
+        <div class="dvn"><a href="/dashboard" class="anv">Dashboard</a></div>
+    </div>
+    <div class="n-val">
+        <p style="margin: 0; padding-bottom: 10px;">Nitrogen</p>
+        <p style="margin: 0; position: relative; left: -40px;"><%=store.npk[0]%></p>
+        <p style="margin: 0; position: relative; top: -30px; left: 40px;"><%=Math.floor(Math.random() * 50);%></p>
+        <p style="margin: 0; font-size: 16px; position: relative; top: -25px; left: -40px;">Expected</p>
+        <p style="margin: 0; font-size: 16px; position: relative; top: -50px; left: 50px;">Current</p>
+    </div>
+    <div class="p-val">
+        <p style="margin: 0; padding-bottom: 10px;">Phosphorous</p>
+        <p style="margin: 0; position: relative; left: -40px;"><%=store.npk[1]%></p>
+        <p style="margin: 0; position: relative; top: -30px; left: 40px;"><%=Math.floor(Math.random() * 50);%></p>
+        <p style="margin: 0; font-size: 16px; position: relative; top: -25px; left: -40px;">Expected</p>
+        <p style="margin: 0; font-size: 16px; position: relative; top: -50px; left: 50px;">Current</p>
+    </div>
+    <div class="k-val">
+        <p style="margin: 0; padding-bottom: 10px;">Potassium</p>
+        <p style="margin: 0; position: relative; left: -40px;"><%=store.npk[2]%></p>
+        <p style="margin: 0; position: relative; top: -30px; left: 40px;"><%=Math.floor(Math.random() * 50);%></p>
+        <p style="margin: 0; font-size: 16px; position: relative; top: -25px; left: -40px;">Expected</p>
+        <p style="margin: 0; font-size: 16px; position: relative; top: -50px; left: 50px;">Current</p>
+    </div>
+    <div class="moisture">
+        <p style="margin: 0; padding-bottom: 10px;">Humidity</p>
+        <p style="margin: 0; position: relative; left: -40px;"><%=store.npk[3]%></p>
+        <p style="margin: 0; position: relative; top: -30px; left: 40px;"><%=Math.floor(Math.random() * 50);%></p>
+        <p style="margin: 0; font-size: 16px; position: relative; top: -25px; left: -40px;">Expected</p>
+        <p style="margin: 0; font-size: 16px; position: relative; top: -50px; left: 50px;">Current</p>
+    </div>
+    <div class="track_soil_content">
+        <h4 style="margin-bottom: 50px; margin-top: 10px;">Soil Suggestions</h4>
+        <%store.soil_suggestions.forEach(function(i){%>
+            <p style="font-size: 20px; font-family: 'Times New Roman', Times, serif;"><%=i%></p>
+            <br>
+        <%})%>
+    </div>
+</div>
+
+<div style="text-align: center; height: 50px; padding-top: 30px; background-color: whitesmoke;">
+    Copyright © 2023 eKrushi. All right reserved
+</div>

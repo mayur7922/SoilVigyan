@@ -1,0 +1,20 @@
+<%-include("header.ejs")%>
+
+<div class="user">
+    <div class="user_info">
+        <h4 style="margin-bottom: 50px; font-family: 'Times New Roman', Times, serif;">Personal Info:</h4>
+        <p style="font-family: 'Times New Roman', Times, serif;"> Name :  <%= userinfo.name  %></p><br>
+        <p style="font-family: 'Times New Roman', Times, serif;"> Address :  <%= userinfo.address %></p><br>
+        <p style="font-family: 'Times New Roman', Times, serif;"> Crops you take :  <%= userinfo.crop_names %></p><br>
+        <p style="font-family: 'Times New Roman', Times, serif;"> User owned land :  <%= userinfo.land %></p><br>
+        <p style="font-family: 'Times New Roman', Times, serif;"> Yearly income :  <%= userinfo.income %></p><br>
+    </div>
+    <div class="previous_transaction">
+        <h4>Previous Market Transaction:</h4>
+    </div>
+    <div class="applied_schemes">
+        <h4>Applied Schemes:</h4>
+    </div>
+</div>
+
+<%-include("footer.ejs")%>

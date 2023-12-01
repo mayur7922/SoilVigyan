@@ -1,0 +1,476 @@
+/* navbar */
+.nav-item{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+#navbarNav{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#nav-cc{
+    /* background-image: linear-gradient(to top left,rgb(235, 250, 218) , rgb(235, 250, 218)); */
+    background-color: #e5f6dc;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+#brand-name{
+    font-family: ubuntu;
+    color: #050505;
+    font-weight: bold;
+    font-size: 1.8rem;
+    margin-left: 25px;
+}
+
+/* title Image */
+.title{
+    text-align: center;
+    background-image: url(/images/main_img.jpg);
+    background-color: #cccccc;
+    width: 100%;
+    height: 770px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.heading{
+    padding-top: 18%;
+    color: rgb(38, 38, 38);
+}
+
+@media (max-width: 1180px) and (min-width:700px){
+    .title{
+        background-image: url(/images/tab_img.png);
+        background-color: #cccccc;
+        width: 100%;
+        height: 770px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+    }
+    .newnav{
+        text-align: center;
+    }
+    .nav-item{
+        margin-bottom: 3%;
+    }
+}
+
+@media (max-width : 700px){
+    .title{
+        background-image: url(/images/mobile_img.png);
+        background-color: #cccccc;
+        width: 100%;
+        height: 770px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+    }
+    .newnav{
+        text-align: center;
+    }
+    .nav-item{
+        margin-bottom: 3%;
+    }
+}
+
+/* Dashboard section */
+
+.dashboard{
+    text-align: center;
+    background-color: rgb(161, 195, 156);
+    width: 100%;
+    height: 350px;
+    padding-top: 120px;
+}
+
+.dashboard-a{
+    height: 900px;
+    background-color: rgb(240, 251, 233);
+}
+
+.dashboard-content{
+    display: inline-block;
+    position: relative;
+    left: 180px;
+    background-color: rgb(236, 254, 224);
+    margin: 30px;
+    border-radius: 20px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.377);
+    height: 870px;
+    width: 1200px;
+    padding: 70px 0 0 0;
+    text-align: center;
+}
+
+.dashboard-img{
+    height: 600px;
+    margin-top: 20px;
+}
+
+/* Features section / Card */
+
+.h{
+    text-align: center;
+    margin-bottom: 2%;
+}
+.ic{
+    margin-right: 3%;
+}
+.cards-cc-top{
+    padding: 3% 8% 5%;
+}
+.cards-cc{
+    text-align: center;
+    padding-right: 5%;
+    padding-left: 5%;
+}
+
+@media (max-width : 700px){
+    .cards-cc{
+        padding-left: 0%;
+    }
+    .cards-cc-top{
+        padding-left: 5%;
+    }
+    .h{
+        padding-top: 5%;
+        padding-left: 2%;
+    }
+}
+
+@media (max-width : 375px){
+    .cards-cc{
+        padding-left: 0%;
+    }
+    .cards-cc-top{
+        padding-left: 3%;
+    }
+}
+
+
+.card{
+    text-align: center;
+    box-shadow: inset 0 0 0 1000px rgba(75, 121, 52, 0.4);
+    border: #cccccc;
+    width: 100%;
+    height: 10px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    margin-right: 20px;
+    margin-top: 50px;
+}
+
+.card-body{
+    margin-top: 30px;
+    box-shadow: 8px 8px #888888;
+}
+
+.card:hover{
+    box-shadow: inset 0 0 0 1000px rgba(116, 155, 116, 0.779);
+}
+
+#cards{
+    /* background: #f7f5ea; */
+    background-image: linear-gradient(to top left,rgb(220, 229, 219) , #b9c8a6);
+}
+
+/* footer */
+.footer-container{
+    padding: 12% 5% 6%;
+}
+#footer{
+    background-color: #1d2e1e;
+    color: white;
+}
+
+.a{
+    background-color: transparent;
+    text-decoration: none;
+}
+
+.an{
+    color: rgb(255, 255, 255); 
+    text-decoration: none;
+}
+
+
+/* features styles */
+
+/* 1) Crop Health Monitoring */
+
+.crop_health_monitoring{
+    background-color: whitesmoke;
+}
+
+.crop_health_monitoring_info{
+    display: inline-block;
+    position: relative;
+    left: 180px;
+    /* background-color: whitesmoke; */
+    background-color: rgb(236, 254, 224);
+    margin: 30px;
+    border-radius: 20px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.377);
+    height: 1250px;
+    width: 1200px;
+    padding-top: 50px;
+    padding-left: 100px;
+}
+
+/* 2) Crop / Fertilizer suggestions */
+
+.crop_fertilizer_suggestions{
+    text-align: center;
+    background-color: whitesmoke;
+    padding-top: 70px;
+}
+
+.crop_suggestions{
+  margin: 0 150px 0;
+  background-color: rgb(240, 251, 233);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.377);
+  height: 600px;
+  border-radius: 20px;
+  text-align: center;
+  padding-top: 50px;
+}
+
+.fertilizer_suggestions{
+    margin: 70px 150px 100px;
+    background-color: rgb(240, 251, 233);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.377);
+    height: 700px;
+    border-radius: 20px;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.prediction-N{
+    width: 150px;
+    position: relative;
+    top: 20px;
+    left: 140px;
+}
+.prediction-P{
+    width: 150px;
+    position: relative;
+    top: -47px;
+    left: 320px;
+}
+.prediction-K{
+    width: 150px;
+    position: relative;
+    top: -114px;
+    left: 500px;
+}
+.prediction-H{
+    width: 150px;
+    position: relative;
+    top: -181px;
+    left: 680px;
+}
+.prediction-T{
+    width: 150px;
+    position: relative;
+    top: -248px;
+    left: 860px;
+}
+.prediction-C{
+    width: 400px;
+    position: relative;
+    top: -248px;
+    left: 370px;
+}
+
+.crop-prediction-button{
+    position: relative;
+    top: -200px;
+}
+
+/* 3) Track soil */
+
+.track_soil{
+    background-color: whitesmoke;
+}
+
+.n-val{
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    left: 180px;
+    background-color: rgb(236, 254, 224);
+    margin: 0px 50px 20px 30px;
+    border-radius: 20px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.193);
+    height: 140px;
+    width: 250px;
+    padding-top: 20px;
+    font-size: 20px;
+}
+.p-val{
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    left: 180px;
+    background-color: rgb(236, 254, 224);
+    margin: 30px 50px 20px 10px;
+    border-radius: 20px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.24);
+    height: 140px;
+    width: 250px;
+    padding-top: 20px;
+    font-size: 20px;
+}
+.k-val{
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    left: 180px;
+    background-color: rgb(236, 254, 224);
+    margin: 30px 50px 20px 10px;
+    border-radius: 20px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.252);
+    height: 140px;
+    width: 250px;
+    padding-top: 20px;
+    font-size: 20px;
+}
+.moisture{
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    left: 180px;
+    background-color: rgb(236, 254, 224);
+    margin: 30px 50px 20px 10px;
+    border-radius: 20px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.219);
+    height: 140px;
+    width: 250px;
+    padding-top: 20px;
+    font-size: 20px;
+}
+
+.track_soil_content{
+    display: inline-block;
+    position: relative;
+    left: 180px;
+    background-color: rgb(236, 254, 224);
+    margin: 10px 30px 30px;
+    border-radius: 20px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.377);
+    height: 500px;
+    width: 1200px;
+    padding-top: 40px;
+    padding-left: 60px;
+}
+
+/* 4) weather */
+
+.weather{
+    display: inline-block;
+    position: relative;
+    left: 180px;
+    background-color: rgb(236, 254, 224);
+    margin: 30px;
+    border-radius: 20px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.377);
+    height: 500px;
+    width: 1200px;
+    padding: 100px 0px 0;
+    text-align: center;
+}
+
+.weather-results{
+    display: inline-block;
+    position: relative;
+    left: 180px;
+    background-color: rgb(236, 254, 224);
+    margin: 30px;
+    border-radius: 20px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.377);
+    height: 500px;
+    width: 1200px;
+    padding-top: 50px;
+    padding-left: 50px;
+}
+
+/* 6) Government Schemes */
+
+.government_schemes{
+    text-align: center;
+    background-color: rgb(240, 251, 233);
+}
+.schemes{
+    text-align: center;
+    height: 1000px;
+    padding: 50px 80px 0px;
+}
+
+.government_schemes_h{
+    margin: auto;
+    margin-bottom: 80px;
+}
+
+/* User page styles */
+
+.user{
+    padding-top: 30px;
+    background-color: rgb(223, 236, 216);
+}
+
+.user_info{
+    font-size: 18px;
+    height: 500px;
+    margin: 30px;
+    margin-top: 0;
+    /* background-color: whitesmoke; */
+    /* background-color: rgb(254, 250, 224); */
+    background-color: rgb(220, 243, 205);
+    padding: 50px 0 0 50px;
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.377);
+    border-radius: 20px;
+}
+.previous_transaction{
+    height: 400px;
+    width: 640px;
+    margin: 30px 0;
+    margin-left: 30px;
+    margin-right: 60px;
+    display: inline-block;
+    background-color: rgb(220, 243, 205);
+    /* background-color: rgb(254, 250, 224); */
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.377);
+    padding: 30px 0 0 30px;
+    border-radius: 20px;
+}
+.applied_schemes{
+    height: 400px;
+    width: 640px;
+    margin: 30px 0;
+    margin-left: 30px;
+    margin-right: 30px;
+    display: inline-block;
+    background-color: rgb(220, 243, 205);
+    /* background-color: rgb(254, 250, 224); */
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.377);
+    padding: 30px 0 0 30px;
+    border-radius: 20px;
+}
+
+/* Other styles */
+
+.select-crop{
+    background-color: whitesmoke;
+    margin: 150px 300px 0;
+    padding-top: 110px;
+    margin-bottom: 100px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.377);
+    border-radius: 30px;
+}

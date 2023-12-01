@@ -1,0 +1,13 @@
+.info_body{
+    height: 800px;
+    text-align: center;
+    background-color: whitesmoke;
+    margin: 30px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.683);
+    padding-top: 80px;
+}
+
+.info-content{
+    padding: 0 300px;
+    margin-bottom: 30px;
+}

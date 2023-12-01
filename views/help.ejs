@@ -1,0 +1,17 @@
+<%-include("header.ejs")%>
+
+<div class="info_body" style="height: 700px; padding-bottom: 100px; background-color: rgb(245, 252, 240);">
+    <form action="/tbd" method="post">
+        <h4 class="info_h1" style="margin-bottom: 50px;">Reach out to us if you have any query!</h4>
+        <div class="name info-content">
+            <label for="" style="margin-bottom: 10px;">What is your query ?</label>
+            <input type="text" name="full_name" class="form-control" autocomplete="off" placeholder="Full name.." required>
+        </div>
+        <div class="info-content">
+            <label for="" style="margin-bottom: 10px;">Explain your query in brief</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" placeholder="Explain your query.." required></textarea>
+        </div>
+        <button class="btn btn-success nav-item btn-md info_btn" style="margin-bottom: 150px;" type="submit">Next >></button>
+    </form>
+    <p style="color: gray;">Copyright © 2023 eKrushi. All right reserved</p>
+</div>

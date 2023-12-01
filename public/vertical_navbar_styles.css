@@ -1,0 +1,38 @@
+.vertical_navbar{
+    position: absolute;
+    width: 180px;
+    height: 500px;
+    background-color: rgb(236, 254, 224);
+    text-align: center;
+    margin-top: 30px;
+    border-radius: 20px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.377);
+    padding-top: 50px;
+}
+
+.avn{
+    margin: 0;
+    padding: 5px 0px;
+    border: 1px rgb(216, 215, 215) solid;
+}
+.bvn{
+    margin: 0;
+    padding: 5px 0px;
+    border: 1px rgb(216, 215, 215) solid;
+}
+.cvn{
+    margin: 0;
+    padding: 5px 0px;
+    border: 1px rgb(216, 215, 215) solid;
+}
+.dvn{
+    margin: 0;
+    padding: 5px 0px;
+    border: 1px rgb(216, 215, 215) solid;
+}
+
+.anv{
+    font-size: 20px;
+    color: black;
+    text-decoration: none;
+}

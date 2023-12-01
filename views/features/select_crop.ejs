@@ -1,0 +1,19 @@
+<%-include("../header.ejs")%>
+
+<div style="text-align: center;">
+    <div style="height: 400px; text-align: center;" class="select-crop">
+        <form action="/select_crop" method="post">
+            <h5 style="font-size: 25px; font-family: 'Times New Roman', Times, serif; margin-bottom: 0;">Select a crop to start monitoring</h4>
+            <select name="type" class="form-select" style="width: 300px; margin: 50px 0 40px 270px;" required>
+                <option value="" data-display="Select">Select crop</option>
+                <option value="Tomato">Tomato</option>
+                <option value="Maize">Maize</option>
+                <option value="Jaggery">Wheat</option>
+                <option value="Sugarcane">Sugarcane</option>
+                <option value="Rice">Rice</option>
+            </select>
+            <button class="btn btn-success nav-item btn-md" style="margin-left: 20px;" type="submit">Next >></button>
+        </form>
+    </div>
+    <p>Copyright © 2023 eKrushi. All right reserved</p>
+</div>

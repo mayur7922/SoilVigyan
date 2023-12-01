@@ -1,0 +1,29 @@
+<%-include("../header.ejs")%>
+
+<div class="crop_health_monitoring">
+    <div class="vertical_navbar">
+        <div class="avn"><a href="/crop_health_monitoring" class="anv">Monitor</a></div>
+        <div class="avn"><a href="/weather_conditions" class="anv">Weather</a></div>
+        <div class="cvn"><a href="/track_soil" class="anv">Soil Track</a></div>
+        <div class="dvn"><a href="/dashboard" class="anv">Dashboard</a></div>
+    </div>
+    <div class="crop_health_monitoring_info">
+        <h3 style="font-size: 20px; margin-bottom: 20px;">Selected Crop: <%=store.crop%></h3>
+        <h3 style="font-size: 20px; margin-bottom: 20px; position: relative; top: -58px; left: 750px; display: inline-block;">Start date: <%=store.date%></h3>
+        <div style="height: 400px;">
+            <h2>Stage : <%=store.stagecnt + 1%> <%=stages[store.stagecnt][0]%></h2><br>
+            <%for(let i = 1; i < stages[store.stagecnt].length; i++){%>
+                <%if(stages[store.stagecnt][i][0] == '-'){%>
+                    <h4><%=stages[store.stagecnt][i]%></h4>
+                <%}else{%>
+                    <p><%=stages[store.stagecnt][i]%></p>
+                <%}%>
+                <br>
+            <%}%>
+        </div>
+        <form action="/crop_health_prev" method="post"><button class="btn btn-success" type="submit" style="position: relative; left: 755px; top: -405px;"><< Prev</button></form>
+        <form action="/crop_health" method="post"><button class="btn btn-success" type="submit" style="position: relative; left: 845px; top: -443px;">Next >></button></form>
+    </div>
+</div>
+
+<%-include("../footer.ejs")%>
