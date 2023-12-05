@@ -3,6 +3,6 @@ const npk_values = [
 ];
 
 // Nitrogen (N), Phosphorous (P), Potassium (K), Humidity, Temperature
-// Dataset to train machine learning model
+// Dataset of how n,p,k values change during the cultivation process of tomato
 
 export default npk_values;

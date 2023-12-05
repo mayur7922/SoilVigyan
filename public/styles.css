@@ -391,14 +391,83 @@
     display: inline-block;
     position: relative;
     left: 180px;
-    background-color: rgb(236, 254, 224);
+    /* background-color: whitesmoke; */
     margin: 30px;
+    /* border-radius: 20px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.377); */
+    height: 800px;
+    width: 1200px;
+    padding-top: 10px;
+    padding-left: 20px;
+    text-align: center;
+}
+
+.weather-content{
+    display: inline-block; 
+    background-color: rgb(236, 254, 224);
     border-radius: 20px;
     box-shadow: 0 20px 35px rgba(0, 0, 0, 0.377);
-    height: 500px;
-    width: 1200px;
-    padding-top: 50px;
-    padding-left: 50px;
+    margin : 0 30px 30px 0;
+    padding: 20px 10px;
+    margin: 15px 15px;
+    text-align: left;
+    width: 350px;
+    height: 310px;
+    font-size: 20px;
+}
+
+/* 5) Market Place */
+.market_heading{
+    font-family: 'Times New Roman', Times, serif;
+    background-color: rgb(236, 254, 224);
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.377);
+    width: 400px;
+    margin: 0 auto 30px;
+    padding: 15px;
+}
+
+.market_demand{
+    background-color: rgb(236, 254, 224);
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.377);
+    height: 400px; 
+    width: 650px; display: 
+    inline-block; margin-right: 40px;
+    padding: 0 50px;
+}
+
+.market_rates{
+    background-color: rgb(236, 254, 224);
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.377);
+    height: 400px; 
+    width: 650px; 
+    display: inline-block;
+    padding: 0 50px;
+}
+
+.market_sell{
+    background-color: rgb(236, 254, 224);
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.377);
+    height: 230px; 
+    margin: 30px 50px;
+}
+
+.previous_request{
+    background-color: rgb(236, 254, 224);
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.377);
+    height: 500px; 
+    margin: 0 50px;
+    margin-bottom: 30px;
+}
+
+.market_sell_input{
+    width: 200px;
+    display: inline-block;
+    margin-left: 10px;
 }
 
 /* 6) Government Schemes */
@@ -423,6 +492,7 @@
 .user{
     padding-top: 30px;
     background-color: rgb(223, 236, 216);
+    padding-bottom: 30px;
 }
 
 .user_info{
@@ -432,33 +502,28 @@
     margin-top: 0;
     /* background-color: whitesmoke; */
     /* background-color: rgb(254, 250, 224); */
-    background-color: rgb(220, 243, 205);
+    /* background-color: rgb(220, 243, 205); */
+    background-color: rgb(230, 248, 218);
     padding: 50px 0 0 50px;
     box-shadow: 0 20px 20px rgba(0, 0, 0, 0.377);
     border-radius: 20px;
 }
 .previous_transaction{
     height: 400px;
-    width: 640px;
     margin: 30px 0;
     margin-left: 30px;
-    margin-right: 60px;
-    display: inline-block;
-    background-color: rgb(220, 243, 205);
-    /* background-color: rgb(254, 250, 224); */
+    margin-right: 30px;
+    background-color: rgb(230, 248, 218);
     box-shadow: 0 20px 35px rgba(0, 0, 0, 0.377);
     padding: 30px 0 0 30px;
     border-radius: 20px;
 }
 .applied_schemes{
     height: 400px;
-    width: 640px;
     margin: 30px 0;
     margin-left: 30px;
     margin-right: 30px;
-    display: inline-block;
-    background-color: rgb(220, 243, 205);
-    /* background-color: rgb(254, 250, 224); */
+    background-color: rgb(230, 248, 218);
     box-shadow: 0 20px 35px rgba(0, 0, 0, 0.377);
     padding: 30px 0 0 30px;
     border-radius: 20px;
@@ -473,4 +538,13 @@
     margin-bottom: 100px;
     box-shadow: 0 20px 35px rgba(0, 0, 0, 0.377);
     border-radius: 30px;
+}
+
+.buyer_market_place_div{
+    height: 700px;
+    background-color: rgb(229, 242, 221);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.377);
+    border-radius: 20px;
+    margin: 30px;
+    padding: 30px 100px 0;
 }

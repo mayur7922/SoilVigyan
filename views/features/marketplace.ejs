@@ -1,7 +1,153 @@
 <%-include("../header.ejs")%>
 
-<div style="height: 500px; width: 100%; text-align: center;">
-    <h1 style="padding-top: 200px;">Welcome to the marketplace</h1>
+<div style="text-align: center;">
+    <div style="padding-top: 30px;">
+        <h1 class="market_heading">Market Place</h1>
+        <div class="market_demand">
+            <h4 style="padding: 10px 0;">Current Demand</h4>
+            <table class="table table-hover">
+                <tr>
+                        <th>Crop</th>
+                        <th>size</th>
+                        <th>Buyer Name</th>
+                        <th>Option</th>
+                </tr>
+                <tr>
+                    <form action="">
+                        <td>Soyabean</td>
+                        <th>100 Ton</th>
+                        <th>Buyer 1</th>
+                        <td><button type="submit" class="btn btn-success btn-md">Connect</button></td>
+                    </form>
+                </tr>
+                <tr>
+                    <form action="">
+                        <td>Soyabean</td>
+                        <th>100 Ton</th>
+                        <th>Buyer 1</th>
+                        <td><button type="submit" class="btn btn-success btn-md">Connect</button></td>
+                    </form>
+                </tr>
+                <tr>
+                    <form action="">
+                        <td>Soyabean</td>
+                        <th>100 Ton</th>
+                        <th>Buyer 1</th>
+                        <td><button type="submit" class="btn btn-success btn-md">Connect</button></td>
+                    </form>
+                </tr>
+                <tr>
+                    <form action="">
+                        <td>Soyabean</td>
+                        <th>100 Ton</th>
+                        <th>Buyer 1</th>
+                        <td><button type="submit" class="btn btn-success btn-md">Connect</button></td>
+                    </form>
+                </tr>
+                <tr>
+                    <form action="">
+                        <td>Soyabean</td>
+                        <th>100 Ton</th>
+                        <th>Buyer 1</th>
+                        <td><button type="submit" class="btn btn-success btn-md">Connect</button></td>
+                    </form>
+                </tr>
+            </table>
+        </div>
+        <div class="market_rates">
+            <h4 style="padding: 10px 0;">Crop Prices</h4>
+            <table class="table table-hover">
+                <tr>
+                    <th>Crop</th>
+                    <th>Current Price</th>
+                    <th>Price (1-2 Months before)</th>
+                    <th>(Expected Price) (In next 2-3 Months)</th>
+                </tr>
+                <tr>
+                    <td>Soyabean</td>
+                    <td>100 /kg</td>
+                    <td>120 /kg</td>
+                    <td>150 /kg</td>
+                </tr>
+                <tr>
+                    <td>Soyabean</td>
+                    <td>100 /kg</td>
+                    <td>120 /kg</td>
+                    <td>150 /kg</td>
+                </tr>
+                <tr>
+                    <td>Soyabean</td>
+                    <td>100 /kg</td>
+                    <td>120 /kg</td>
+                    <td>150 /kg</td>
+                </tr>
+                <tr>
+                    <td>Soyabean</td>
+                    <td>100 /kg</td>
+                    <td>120 /kg</td>
+                    <td>150 /kg</td>
+                </tr>
+                <tr>
+                    <td>Soyabean</td>
+                    <td>100 /kg</td>
+                    <td>120 /kg</td>
+                    <td>150 /kg</td>
+                </tr>
+                <tr>
+                    <td>Soyabean</td>
+                    <td>100 /kg</td>
+                    <td>120 /kg</td>
+                    <td>150 /kg</td>
+                </tr>
+            </table>
+        </div>
+        <!-- store.islog == true -->
+        <%if(1){%>
+            <div class="market_sell">
+                <h3 style="padding: 10px 0 30px; font-family: 'Times New Roman', Times, serif;">Sell your produce / seeds</h3>
+                <form action="/farmer_request" method="post">
+                    <div class="name market_sell_input">
+                        <label for="">Crop Name</label>
+                        <input type="text" name="crop" class="form-control" autocomplete="off" placeholder="Crop.." required>
+                    </div>
+                    <div class="name market_sell_input">
+                        <label for="">Stock Size</label>
+                        <input type="text" name="size" class="form-control" autocomplete="off" placeholder="Size.." required>
+                    </div>
+                    <div class="name market_sell_input">
+                        <label for="">Expected Price</label>
+                        <input type="text" name="price" class="form-control" autocomplete="off" placeholder="Price.." required>
+                    </div>
+                    <div class="name market_sell_input">
+                        <label for="">Duration</label>
+                        <input type="text" name="duration" class="form-control" autocomplete="off" placeholder="Duration.." required>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-success btn-md" style="margin-top: 20px; width: 70px;">ADD</button>
+                </form>
+            </div>
+            <div class="previous_request">
+                <h3 style="padding: 20px 0; font-family: 'Times New Roman', Times, serif;">Your previous request</h3>
+                <%if(store.request.length > 0){%>
+                    <table class="table table-hover">
+                        <tr>
+                            <th>Crop Name</th>
+                            <th>Stock Size</th>
+                            <th>Price</th>
+                            <th>Duration</th>
+                        </tr>
+                        <%store.request.forEach(function(i){%>
+                            <tr>
+                                <td><%=i.crop%></td>
+                                <td><%=i.size%></td>
+                                <td><%=i.price%></td>
+                                <td><%=i.duration%></td>
+                            </tr>
+                        <%})%>
+                    </table>
+                <%}%>
+            </div>
+        <%}%>
+    </div>
+    <p style="margin-top: 50px;">Copyright © 2023 eKrushi. All right reserved</p>
 </div>
-
-<%-include("../footer.ejs")%>

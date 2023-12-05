@@ -6,6 +6,8 @@ import mongoose from "mongoose";
 import stages from "./stages.js";
 import npk_values from "./stnpk_values.js";
 import tf from "@tensorflow/tfjs";
+import training_dataset from "./z1_dataset.js";
+import dataset_labels from "./z2_labels.js";
 
 mongoose.connect("mongodb+srv://admin-mayur:pass123@cluster0.3krzrdf.mongodb.net/eKrushi");
 
@@ -18,7 +20,9 @@ const userSchema = new mongoose.Schema({
     username : String,
     password : String,
     crop : String,
-    date : String
+    date : String,
+    stage_cnt : Number,
+    farmer_request : [],
 });
 const User = mongoose.model("User",userSchema);
 
@@ -28,6 +32,16 @@ const buyerSchema = new mongoose.Schema({
     password : String
 });
 const Buyer = mongoose.model("Buyer",buyerSchema);
+
+// buyer marketplace schema
+const buyer_marketplace = new mongoose.Schema({
+    crop : String,
+    size : String,
+    price : String,
+    duration : String,
+    farmer_name : String
+});
+const Buyer_marketplace = mongoose.model("Buyer_marketplace",buyer_marketplace);
 
 // variables
 
@@ -42,7 +56,8 @@ var store = {
     fertilizer_suggestion: [],
     date : "",
     npk : [],
-    soil_suggestions : []
+    soil_suggestions : [],
+    request : []
 }
 
 var userinfo = {
@@ -102,7 +117,12 @@ app.get("/track_soil", (req,res)=>{
     var n = Math.floor(Math.random() * 300);
     store.npk = npk_values[n];
     store.soil_suggestions = [];
-    if(store.npk[0] < 5){
+    var tvalues = [0,0,0,0];
+    tvalues[0] = Math.floor(Math.random() * 50);
+    tvalues[1] = Math.floor(Math.random() * 50);
+    tvalues[2] = Math.floor(Math.random() * 50);
+    tvalues[3] = Math.floor(Math.random() * 100);
+    if(store.npk[0] > tvalues[0]){
         var s = "Nitrogen level has became less, add some nitrogen containing fertilizers once in a week.";
         store.soil_suggestions.push(s);
     }
@@ -110,15 +130,15 @@ app.get("/track_soil", (req,res)=>{
         var s = "Reduce nitrogen-containing fertilizers and consider balanced fertilizers. Monitor and adjust based on future soil tests.";
         store.soil_suggestions.push(s);
     }
-    if(store.npk[1] < 14){
+    if(store.npk[1] > tvalues[1]){
         var s = "Phosphorous level has became less, add some phosphorous containing fertilizers once in a week.";
         store.soil_suggestions.push(s);
     }
     else{
-        var s = "Phosphorus excess is less common, but if it occurs, consider reducing phosphatic fertilizers. Monitor and adjust based on future soil tests.";
+        var s = "Phosphorus is in excessive amount, consider reducing phosphatic fertilizers. Monitor and adjust based on future soil tests.";
         store.soil_suggestions.push(s);
     }
-    if(store.npk[2] < 15){
+    if(store.npk[2] > tvalues[2]){
         var s = "Potassium level has became less";
         store.soil_suggestions.push(s);
     }
@@ -126,7 +146,7 @@ app.get("/track_soil", (req,res)=>{
         var s = "Reduce potassic fertilizers. Monitor and adjust based on future soil tests";
         store.soil_suggestions.push(s);
     }
-    if(store.npk[3] < 60){
+    if(store.npk[3] > tvalues[3]){
         var s = "Improve water management practices, consider irrigation, and use organic matter to enhance soil water retention";
         store.soil_suggestions.push(s);
     }
@@ -134,7 +154,7 @@ app.get("/track_soil", (req,res)=>{
         var s = "Improve drainage, use soil amendments, and adjust irrigation practices to avoid waterlogging.";
         store.soil_suggestions.push(s);
     }
-    if(store.npk[4] < 25){
+    if(store.npk[3] < tvalues[3]){
         var s = "Current temperature is low, slow down the irrigation process";
         store.soil_suggestions.push(s);
     }
@@ -144,7 +164,7 @@ app.get("/track_soil", (req,res)=>{
     }
     if(store.islog == false) res.redirect("/login");
     else if(store.crop == null) res.render("features/select_crop.ejs",{store : store});
-    else res.render("features/track_soil.ejs",{store : store});
+    else res.render("features/track_soil.ejs",{store : store, tvalues : tvalues});
 });
 
 app.get("/weather_conditions",(req,res)=>{
@@ -180,8 +200,10 @@ app.get("/about_us",(req,res)=>{
     res.render("about_us.ejs",{store : store});
 });
 
-app.get("/buyer_marketplace",(req,res)=>{
-    res.render("features/buyer_marketplace.ejs",{store : store});
+app.get("/buyer_marketplace", async(req,res)=>{
+    var isfind = await Buyer_marketplace.find();
+    var buyer_options = isfind;
+    res.render("features/buyer_marketplace.ejs",{store : store, buyer_options : buyer_options});
 });
 
 
@@ -205,6 +227,7 @@ app.post("/login_clicked",async(req,res)=>{
         else {
             store.islog = true;
             store.crop = isfind.crop;
+            store.request = isfind.farmer_request;
             res.render("user.ejs",{store : store, userinfo : userinfo});
         }
     }
@@ -260,8 +283,8 @@ app.post("/tbd",(req,res)=>{
 // post request of features
 
 app.post("/crop_health",(req,res)=>{
-    store.stagecnt += 1;
-    store.stagecnt %= 7;
+    if(store.stagecnt < 6) store.stagecnt += 1;
+    // store.stagecnt %= 7;
     res.render("features/crop_health_monitoring.ejs",{store : store, stages : stages});
 });
 
@@ -291,102 +314,10 @@ app.post("/crop_prediction",(req,res)=>{
     });
 
     // Training data
-    const input_data = tf.tensor2d([
-        [110, 70, 130, 70, 6.0],
-        [115, 75, 140, 75, 6.2],
-        [100, 60, 120, 65, 6.5],
-        [120, 80, 150, 80, 5.8],
-        [105, 65, 125, 68, 6.1],
-        [112, 72, 135, 72, 6.3],
-        [95, 55, 110, 60, 6.8],
-        [130, 90, 160, 85, 5.5],
-        [108, 68, 128, 67, 6.4],
-        [140, 100, 170, 90, 5.0],
-        [90, 50, 100, 80, 7.0],
-        [95, 55, 110, 85, 7.2],
-        [100, 60, 120, 90, 6.8],
-        [105, 65, 130, 95, 6.6],
-        [110, 70, 140, 100, 6.5],
-        [115, 75, 150, 105, 6.3],
-        [120, 80, 160, 110, 6.0],
-        [125, 85, 170, 115, 5.8],
-        [130, 90, 180, 120, 5.5],
-        [135, 95, 190, 125, 5.2],
-        [100, 50, 80, 50, 7.5],
-        [110, 60, 90, 55, 7.2],
-        [95, 45, 75, 45, 7.8],
-        [120, 70, 100, 60, 7.0],
-        [105, 55, 85, 58, 7.4],
-        [115, 65, 95, 62, 7.2],
-        [90, 40, 70, 40, 8.0],
-        [130, 80, 110, 65, 6.8],
-        [98, 48, 78, 56, 7.7],
-        [140, 90, 120, 70, 6.5],
-        [90, 42, 43, 82.00274423, 6.502985292],
-        [85, 58, 41, 80.31964408, 7.038096361],
-        [60, 55, 44, 82.3207629, 7.840207144],
-        [78,42,42,81.60487287,7.628472891],
-        [69,37,42,83.37011772,7.073453503],
-        [69,55,38,82.63941394,5.70080568],
-        [78,	48,	22,	63.10459626,	5.588650585],
-        [87,	54,	20,	63.4711755,	6.576418207000000],
-        [87,	35,	25,	63.1621551,	6.178056304],
-        [24,	67,	22,	22.89845607,	5.618844277000000],
-        [11,	71,	24,	22.7182355,	5.6066203460000000],
-        [37,	74,	15,	18.22590825,	5.582178402],
-        [4,	36,	22,	86.13316408,	7.012740397000000],
-        [10,	59,	22,	86.99495766,	7.1556850160000000],
-        [14,	48,	21,	84.80084105,	6.991242362]
-    ], [45, 5]);
+    const input_data = tf.tensor2d(training_dataset, [343, 5]);
 
     // Crop labels corresponding to the input data
-    const crop_labels = tf.tensor2d([
-    [1,0,0,0,0,0,0],
-    [1,0,0,0,0,0,0],
-    [1,0,0,0,0,0,0],
-    [1,0,0,0,0,0,0],
-    [1,0,0,0,0,0,0],
-    [1,0,0,0,0,0,0],
-    [1,0,0,0,0,0,0],
-    [1,0,0,0,0,0,0],
-    [1,0,0,0,0,0,0],
-    [1,0,0,0,0,0,0],
-    [1,0,0,0,0,0,0],
-    [0,1,0,0,0,0,0],
-    [0,1,0,0,0,0,0],
-    [0,1,0,0,0,0,0],
-    [0,1,0,0,0,0,0],
-    [0,1,0,0,0,0,0],
-    [0,1,0,0,0,0,0],
-    [0,1,0,0,0,0,0],
-    [0,1,0,0,0,0,0],
-    [0,1,0,0,0,0,0],
-    [0,1,0,0,0,0,0],
-    [0,0,1,0,0,0,0],
-    [0,0,1,0,0,0,0],
-    [0,0,1,0,0,0,0],
-    [0,0,1,0,0,0,0],
-    [0,0,1,0,0,0,0],
-    [0,0,1,0,0,0,0],
-    [0,0,1,0,0,0,0],
-    [0,0,1,0,0,0,0],
-    [0,0,1,0,0,0,0],
-    [0,0,0,1,0,0,0],
-    [0,0,0,1,0,0,0],
-    [0,0,0,1,0,0,0],
-    [0,0,0,1,0,0,0],
-    [0,0,0,1,0,0,0],
-    [0,0,0,1,0,0,0],
-    [0,0,0,0,1,0,0],
-    [0,0,0,0,1,0,0],
-    [0,0,0,0,1,0,0],
-    [0,0,0,0,0,1,0],
-    [0,0,0,0,0,1,0],
-    [0,0,0,0,0,1,0],
-    [0,0,0,0,0,0,1],
-    [0,0,0,0,0,0,1],
-    [0,0,0,0,0,0,1],
-    ], [45, numClasses]);
+    const crop_labels = tf.tensor2d(dataset_labels, [343, numClasses]);
 
     // Training the model
     model.fit(input_data, crop_labels, { epochs: 100 });
@@ -438,14 +369,45 @@ app.post("/fertilizer_suggestions",(req,res)=>{
 app.post("/weather_conditions",async(req,res)=>{
     try{
         var cityName = req.body.city;
-        var weather_url = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=632895ac151e2d5a324524da10d1d00b";
-        var weather_info = await axios.get(weather_url);
-        var result = weather_info.data;
+        var turl = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName +"&cnt=6&appid=632895ac151e2d5a324524da10d1d00b";
+        var wt = await axios.get(turl);
+        var result = wt.data;
         res.render("features/weather_conditions2.ejs",{store : store,result : result});
     }
     catch(error){
         console.log("Error");
     }
+});
+
+// market place post request
+
+app.post("/farmer_request",async(req,res)=>{
+    var obj = {
+        crop: req.body.crop,
+        size: req.body.size,
+        price: req.body.price,
+        duration: req.body.duration
+    }
+    var obj1 = new Buyer_marketplace({
+        crop: req.body.crop,
+        size: req.body.size,
+        price: req.body.price,
+        duration: req.body.duration,
+        farmer_name : store.username
+    });
+    obj1.save();
+    // console.log(obj);
+    var isfind = await User.findOne({username : store.username});
+    isfind.farmer_request.push(obj);
+    isfind.save();
+    store.request.push(obj);
+    res.redirect("/market_place");
+});
+
+// Government Schemes
+
+app.post("/scheme_clicked",async(req,res)=>{
+    console.log(req.body);
 });
 
 // post request of dashboard
@@ -456,8 +418,9 @@ app.post("/select_crop", async(req,res)=>{
     if(date.getDate() < 10) s += '0';
     s += date.getDate();
     s += '/';
-    if(date.getMonth() < 10) s += '0';
-    s += date.getMonth();
+    let month = date.getMonth() + 1;
+    if(month < 10) s += '0';
+    s += month;
     s += '/';
     s += date.getFullYear();
     store.date = s;

@@ -8,12 +8,21 @@
         <div class="dvn"><a href="/dashboard" class="anv">Dashboard</a></div>
     </div>
     <div class="weather-results">
-        <h3 style="margin-bottom: 30px;">Weather conditions</h3>
-        <h3><%=result.name%> City</h3><br>
-        <h4>Current temperature : <%=result.main.temp - 273%></h4><br>
-        <h4>Climate : <%=result.weather[0].description%></h4><br>
-        <h4>Today's min temperature : <%=result.main.temp_min - 273%></h4><br>
-        <h4>Today's max temperature : <%=result.main.temp_max - 273%></h4>
+        <h3 style="margin-bottom: 20px; font-family: 'Times New Roman', Times, serif;">Weather conditions at <%=result.city.name%></h3>
+        <%var day = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]%>
+        <%var cnt = new Date().getDay();%>
+        <%result.list.forEach(function(i){%>
+            <div class="weather-content">
+                <p style="margin: 0 0 30px 0; font-family: 'Times New Roman', Times, serif;"><%=day[cnt]%></p>
+                <%cnt = cnt - 1;%>
+                <%if(cnt == -1){cnt = 6}%>
+                <p style="margin: 0 0 15px; font-family: 'Times New Roman', Times, serif;">Current temperature : <%=parseInt(i.main.temp - 273)%> deg C</p>
+                <p style="margin: 0 0 15px; font-family: 'Times New Roman', Times, serif;">Climate : <%=i.weather[0].description%></p>
+                <p style="margin: 0 0 15px; font-family: 'Times New Roman', Times, serif;">Min temperature : <%=parseInt(i.main.temp_min - 273)%> deg C</p>
+                <p style="margin: 0 0 15px; font-family: 'Times New Roman', Times, serif;">Max temperature : <%=parseInt(i.main.temp_max - 273)%> deg C</p>
+                <p style="margin: 0 0 15px; font-family: 'Times New Roman', Times, serif;">Humidity : <%=parseInt(i.main.humidity)%></p>
+            </div>
+        <%})%>
     </div>
 </div>
 
