@@ -23,6 +23,9 @@ This project aims to assist farmers by analysing the real time soil data (such a
 ### Crop stages roadmap 
 - Providing step by step information about the cultivation process from presowing to harvesting stages.
 
+## Flow of Data
+![Dataflow image](https://github.com/mayur7922/SoilVigyan/blob/main/dataflow.png)
+
 ## Technologies Used
 - Frontend: HTML, CSS, Bootstrap, JavaScript
 - Backend: Node.js, Express.js, MongoDB streams, Web Sockets, Weather API
