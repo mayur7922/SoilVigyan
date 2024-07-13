@@ -3,11 +3,11 @@ import bodyParser from "body-parser";
 import ejs from "ejs";
 import axios from "axios";
 import mongoose from "mongoose";
-import stages from "./stages.js";
-import npk_values from "./stnpk_values.js";
+import stages from "./CropStages.js";
+import npk_values from "./values.js";
 import tf from "@tensorflow/tfjs";
-import training_dataset from "./z1_dataset.js";
-import dataset_labels from "./z2_labels.js";
+import training_dataset from "./values1.js";
+import dataset_labels from "./values2.js";
 
 mongoose.connect("mongodb+srv://admin-mayur:pass123@cluster0.3krzrdf.mongodb.net/eKrushi");
 
